@@ -4,7 +4,7 @@ import { useState } from "react";
 const url="https://jsonplaceholder.typicode.com/todos/1"
 
 
-const[data, setData]=("null")
+const[data, setData]=("")
 
 const Parent =()=>{
   fetch(url).then((res)=>{
@@ -26,8 +26,6 @@ const Parent =()=>{
   return(
     <>
     <h3>Hello World</h3>
-    {/* <button onClick={updateData}></button> */}
-    <p>{data.title}</p>
     </>
   )
 }
