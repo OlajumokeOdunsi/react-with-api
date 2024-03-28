@@ -1,31 +1,42 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import Child from "./Child";
 
-import { useState } from "react";
+
 const url="https://jsonplaceholder.typicode.com/todos/1"
 
 
-const[data, setData]=("")
 
-const Parent =()=>{
-  fetch(url).then((res)=>{
-    console.log(res)
-    return res.json()
-  }).then((data)=>{
-  }).catch(error=>{
-    console.log("An error occured", error)
+const Parent = () => {
 
-    const updateData =()=>{
-      setData(url)
+    const [ data, setData ] = useState({});
+
+         
+     
+
+
+    useEffect(()=>{
+      fetch(url).then(  (res) => {
+        // setData( res)
+        res.json()
+        console.log(res)
+    }).then((data)=>{
+    console.log(data)
+    })
+    .catch((e)=> {
+        console.log("Wahala! Wahala!!", e)
+    })
       console.log(data)
-    
-    }
-    
-  })
+    }, [])
+
 
 
   return(
     <>
-    <h3>Hello World</h3>
+        <h3>Hello World</h3>
+        <h1>{data.title}</h1>
+        <Child title={data.title}/>
+
+
     </>
   )
 }
@@ -33,4 +44,4 @@ const Parent =()=>{
 
 
 
-export  default Parent
+export  default Parent
