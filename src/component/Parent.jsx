@@ -17,15 +17,17 @@ const Parent = () => {
     useEffect(()=>{
       fetch(url).then(  (res) => {
         // setData( res)
-        res.json()
+       return res.json()
         console.log(res)
     }).then((data)=>{
+      setData(data)
     console.log(data)
     })
     .catch((e)=> {
         console.log("Wahala! Wahala!!", e)
     })
       console.log(data)
+
     }, [])
 
 
@@ -34,7 +36,7 @@ const Parent = () => {
     <>
         <h3>Hello World</h3>
         <h1>{data.title}</h1>
-        <Child title={data.title}/>
+        <Child title={data}/>
 
 
     </>
